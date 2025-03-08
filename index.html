@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modelos Anatômicos</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        font-family: "Garamond", serif;
+        background-color: #f5f5dc;
+        color: #333;
+        margin: 20px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      .dark-theme {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+      }
+      h1 {
+        text-align: center;
+        font-size: 2.5em;
+        text-decoration: underline;
+      }
+      img {
+        width: 100%;
+        max-width: 400px;
+        display: block;
+        margin: 0 auto;
+      }
+      .section {
+        margin-bottom: 40px;
+      }
+      .menu-btn {
+        border-radius: 50%;
+        padding: 10px;
+        background-color: #8b0000;
+        color: white;
+        border: none;
+        cursor: pointer;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+      }
+      .filter-menu {
+        display: none;
+        position: fixed;
+        bottom: 4%; /* Ajustado para ficar mais para baixo */
+        right: 4%;
+        background-color: rgb(213, 200, 168);
+        border: 1px solid #ccc;
+        color: #1a1a1a;
+        border-radius: 5px;
+        padding: 10px;
+        z-index: 1000;
+        width: 250px;
+      }
+      .theme-toggle-btn {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background-color: #333;
+        color: #ffcc00;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        z-index: 1000;
+      }
+      .clear-filters-btn {
+        background-color: #8b0000;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Estelad Dírath</h1>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div id="filter-menu" class="filter-menu">
+      <h5>Escolha a Raça</h5>
+      <div>
+        <label
+          ><input type="checkbox" value="Humanos" onchange="aplicarFiltros()" />
+          Humanos</label
+        ><br />
+        <label
+          ><input type="checkbox" value="Anões" onchange="aplicarFiltros()" />
+          Anões</label
+        ><br />
+        <label
+          ><input type="checkbox" value="Elfos" onchange="aplicarFiltros()" />
+          Elfos</label
+        ><br />
+        <label
+          ><input type="checkbox" value="Orcs" onchange="aplicarFiltros()" />
+          Orcs</label
+        ><br />
+        <label
+          ><input
+            type="checkbox"
+            value="Draconatos"
+            onchange="aplicarFiltros()"
+          />
+          Draconatos</label
+        ><br />
+        <label
+          ><input
+            type="checkbox"
+            value="Tieflings"
+            onchange="aplicarFiltros()"
+          />
+          Tieflings</label
+        ><br />
+      </div>
+      <h5>Escolha Detalhes</h5>
+      <div>
+        <label
+          ><input
+            type="checkbox"
+            id="detalhe-resumo"
+            onchange="aplicarFiltros()"
+          />
+          Resumo</label
+        ><br />
+        <label
+          ><input
+            type="checkbox"
+            id="detalhe-pontos"
+            onchange="aplicarFiltros()"
+          />
+          Pontos Fortes e Fracos</label
+        ><br />
+        <label
+          ><input
+            type="checkbox"
+            id="detalhe-detalhado"
+            onchange="aplicarFiltros()"
+          />
+          Detalhado</label
+        ><br />
+      </div>
+      <h5>Escolha Tópicos</h5>
+      <div>
+        <label
+          ><input
+            type="checkbox"
+            id="diagnostico"
+            onchange="aplicarFiltros()"
+          />
+          Diagnóstico de Doenças</label
+        ><br />
+        <label
+          ><input type="checkbox" id="tratamento" onchange="aplicarFiltros()" />
+          Tratamento de Ferimentos</label
+        ><br />
+        <label
+          ><input type="checkbox" id="cirurgias" onchange="aplicarFiltros()" />
+          Cirurgias</label
+        ><br />
+        <label
+          ><input type="checkbox" id="curas" onchange="aplicarFiltros()" />
+          Curas Alternativas</label
+        ><br />
+        <label
+          ><input
+            type="checkbox"
+            id="ferramentas"
+            onchange="aplicarFiltros()"
+          />
+          Ferramentas Médicas</label
+        ><br />
+      </div>
+      <button class="clear-filters-btn" onclick="limparFiltros()">
+        Limpar Filtros
+      </button>
+    </div>
+
+    <button class="theme-toggle-btn" onclick="toggleTheme()">💡</button>
+
+    <div class="container" id="informacoes-container">
+      <!-- Informações da raça selecionada aparecerão aqui -->
+      <div class="section" id="Humanos">
+        <h2>Humanos (Homo sapiens)</h2>
+        <img src="/Humano.jpeg" alt="Humano" />
+        <div class="resumo">
+          <h5>Resumo</h5>
+          <ul>
+            <li>206 ossos como nos humanos do mundo real.</li>
+            <li>
+              Ossos médios em densidade e espessura, conferindo boa mobilidade e
+              resistência.
+            </li>
+            <li>
+              Variações anatômicas são comuns devido à diversidade genética.
+            </li>
+            <li>
+              Ossos do crânio moderadamente espessos, protegendo o cérebro de
+              impactos leves.
+            </li>
+          </ul>
+          <h5>Sistema Muscular</h5>
+          <ul>
+            <li>Músculos proporcionais à estrutura esquelética.</li>
+            <li>Boa capacidade de resistência e regeneração muscular.</li>
+            <li>
+              Alta plasticidade: humanos podem ganhar força, resistência ou
+              velocidade com treinamento.
+            </li>
+          </ul>
+          <h5>Sistemas Internos</h5>
+          <ul>
+            <li>
+              Respiratório: Pulmões bem desenvolvidos, permitem esforço moderado
+              sem risco de exaustão rápida.
+            </li>
+            <li>
+              Cardiovascular: Coração eficiente, mas propenso a doenças com
+              envelhecimento.
+            </li>
+            <li>
+              Digestivo: Sistema padrão, capaz de processar quase todos os tipos
+              de alimentos.
+            </li>
+            <li>Nervoso: Equilíbrio entre reflexos e cognição.</li>
+          </ul>
+        </div>
+        <div class="pontos-fortes-fracos">
+          <h5>Pontos Fortes e Fracos</h5>
+          <h6>Pontos Fortes:</h6>
+          <ul>
+            <li>✔️ Força, resistência e plasticidade muscular.</li>
+          </ul>
+          <h6>Pontos Fracos:</h6>
+          <ul>
+            <li>❌ Propensão a doenças com envelhecimento.</li>
+          </ul>
+        </div>
+        <div class="detalhado">
+          <h5>Detalhado</h5>
+          <h6>Parte 1: Superior (Cabeça e Pescoço)</h6>
+          <ul>
+            <li>Crânio (1,4 kg) – Protege o cérebro.</li>
+            <li>
+              Mandíbula (0,3 kg) – Ossos maxilares sustentam os dentes e a
+              mastigação.
+            </li>
+            <li>
+              Vértebras cervicais (0,5 kg total) – 7 vértebras (C1 a C7)
+              sustentam o pescoço.
+            </li>
+          </ul>
+          <h6>Parte 2: Centro (Peito, Abdômen e Genitália)</h6>
+          <ul>
+            <li>Costelas (4 kg total) – 12 pares protegem órgãos internos.</li>
+            <li>Esterno (0,3 kg, 20 cm) – Protege o coração.</li>
+            <li>
+              Vértebras torácicas e lombares (1,2 kg total) – Sustentação do
+              tronco.
+            </li>
+            <li>Bacia/Pelve (1,5 kg total) – Estrutura de suporte.</li>
+          </ul>
+          <h6>Parte 3: Auxiliares (Braços e Pernas)</h6>
+          <ul>
+            <li>Úmero (0,3 kg, 35 cm) – Osso do braço.</li>
+            <li>Rádio e Ulna (0,4 kg juntos, 25 cm) – Ossos do antebraço.</li>
+            <li>Fêmur (0,7 kg, 50 cm) – Maior osso do corpo.</li>
+            <li>Tíbia e Fíbula (0,6 kg juntas, 40 cm) – Ossos da perna.</li>
+            <li>Mãos e Pés (1,3 kg total) – Mobilidade e destreza.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Seção dos Anões -->
+      <div class="section" id="Anões">
+        <h2>Anões (Homo Montanus)</h2>
+        <img src="/Anão.jpeg" alt="Anão" />
+        <div class="resumo">
+          <h5>Resumo</h5>
+          <ul>
+            <li>Cerca de 230 ossos, devido a pequenas variações ósseas.</li>
+            <li>Ossos extremamente densos, tornando-os quase inquebráveis.</li>
+            <li>Crânio reforçado para suportar impactos diretos.</li>
+            <li>Vértebras mais grossas e resistentes à compressão.</li>
+          </ul>
+          <h5>Sistema Muscular</h5>
+          <ul>
+            <li>
+              Músculos curtos e compactos, conferindo grande força para o
+              tamanho.
+            </li>
+            <li>Alta resistência à fadiga muscular.</li>
+            <li>Regeneração muscular mais lenta que a humana.</li>
+          </ul>
+          <h5>Sistemas Internos</h5>
+          <ul>
+            <li>Respiratório: Pulmões adaptados para baixa oxigenação.</li>
+            <li>Cardiovascular: Coração forte, batimentos mais lentos.</li>
+            <li>Digestivo: Metabolismo lento.</li>
+            <li>Nervoso: Reflexos mais lentos, mas boa coordenação.</li>
+          </ul>
+        </div>
+        <div class="pontos-fortes-fracos">
+          <h5>Pontos Fortes e Fracos</h5>
+          <h6>Pontos Fortes:</h6>
+          <ul>
+            <li>✔️ Resistência física extrema.</li>
+            <li>✔️ Tolerância a toxinas.</li>
+          </ul>
+          <h6>Pontos Fracos:</h6>
+          <ul>
+            <li>❌ Menor mobilidade.</li>
+            <li>❌ Dificuldade para nadar.</li>
+          </ul>
+        </div>
+        <div class="detalhado">
+          <h5>Detalhado</h5>
+          <h6>Parte 1: Superior (Cabeça e Pescoço)</h6>
+          <ul>
+            <li>Crânio (2 kg) – Mais espesso e resistente.</li>
+            <li>Mandíbula (0,5 kg) – Ossos maxilares mais grossos.</li>
+            <li>
+              Vértebras cervicais (0,6 kg total) – 7 vértebras mais grossas.
+            </li>
+          </ul>
+          <h6>Parte 2: Centro (Peito, Abdômen e Genitália)</h6>
+          <ul>
+            <li>Costelas (6 kg total) – 14 pares.</li>
+            <li>Esterno (0,5 kg, 22 cm) – Extremamente espesso.</li>
+            <li>
+              Vértebras torácicas e lombares (2 kg total) – Mais compactas.
+            </li>
+            <li>Bacia/Pelve (2,5 kg total) – Muito mais larga.</li>
+          </ul>
+          <h6>Parte 3: Auxiliares (Braços e Pernas)</h6>
+          <ul>
+            <li>Úmero (0,5 kg, 30 cm) – Mais curto.</li>
+            <li>Rádio e Ulna (0,6 kg juntos, 22 cm) – Extremamente grossos.</li>
+            <li>Fêmur (1 kg, 40 cm) – Extremamente forte.</li>
+            <li>Tíbia e Fíbula (0,8 kg juntas, 35 cm) – Resistentes.</li>
+            <li>Mãos e Pés (1,5 kg total) – Pegada firme.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Seção dos Elfos -->
+      <div class="section" id="Elfos">
+        <h2>Elfos (Homo sylvanus)</h2>
+        <img src="/Elfo.jpeg" alt="Elfo" />
+        <div class="resumo">
+          <h5>Resumo</h5>
+          <ul>
+            <li>Cerca de 190 ossos, alguns mais finos que os humanos.</li>
+            <li>Ossos leves, porém flexíveis e resistentes a fraturas.</li>
+          </ul>
+          <h5>Sistema Muscular</h5>
+          <ul>
+            <li>
+              Músculos longos e fibrosos, favorecendo resistência e
+              flexibilidade.
+            </li>
+            <li>Capacidade regenerativa superior.</li>
+          </ul>
+          <h5>Sistemas Internos</h5>
+          <ul>
+            <li>Respiratório: Pulmões extremamente eficientes.</li>
+            <li>Cardiovascular: Coração leve e eficiente.</li>
+            <li>Digestivo: Dieta baseada em vegetais e carnes leves.</li>
+          </ul>
+        </div>
+        <div class="pontos-fortes-fracos">
+          <h5>Pontos Fortes e Fracos</h5>
+          <h6>Pontos Fortes:</h6>
+          <ul>
+            <li>✔️ Mobilidade e reflexos.</li>
+          </ul>
+          <h6>Pontos Fracos:</h6>
+          <ul>
+            <li>❌ Baixa resistência a impactos.</li>
+          </ul>
+        </div>
+        <div class="detalhado">
+          <h5>Detalhado</h5>
+          <h6>Parte 1: Superior (Cabeça e Pescoço)</h6>
+          <ul>
+            <li>Crânio (1,5 kg) – Levemente mais alongado.</li>
+            <li>Mandíbula (0,4 kg) – Mais delgada e flexível.</li>
+          </ul>
+          <h6>Parte 2: Centro (Peito, Abdômen e Genitália)</h6>
+          <ul>
+            <li>Costelas (5 kg total) – 12 pares, mais finas.</li>
+          </ul>
+          <h6>Parte 3: Auxiliares (Braços e Pernas)</h6>
+          <ul>
+            <li>Úmero (0,4 kg, 32 cm) – Longo e delgado.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Seção dos Meio-Orcs -->
+      <div class="section" id="Orcs">
+        <h2>Meio-Orcs (Homo brutalis)</h2>
+        <img src="/Orc.jpeg" alt="Orc" />
+        <div class="resumo">
+          <h5>Resumo</h5>
+          <ul>
+            <li>220 ossos, mais espessos e densos.</li>
+          </ul>
+          <h5>Sistema Muscular</h5>
+          <ul>
+            <li>Músculos densos, projetados para força bruta.</li>
+          </ul>
+          <h5>Sistemas Internos</h5>
+          <ul>
+            <li>Respiratório: Pulmões amplos.</li>
+          </ul>
+        </div>
+        <div class="pontos-fortes-fracos">
+          <h5>Pontos Fortes e Fracos</h5>
+          <h6>Pontos Fortes:</h6>
+          <ul>
+            <li>✔️ Força Bruta Inigualável.</li>
+          </ul>
+          <h6>Pontos Fracos:</h6>
+          <ul>
+            <li>❌ Baixa Mobilidade.</li>
+          </ul>
+        </div>
+        <div class="detalhado">
+          <h5>Detalhado</h5>
+          <h6>Parte 1: Superior (Cabeça e Pescoço)</h6>
+          <ul>
+            <li>Crânio (2 kg, 23 cm) – Mais espesso e reforçado.</li>
+          </ul>
+          <h6>Parte 2: Centro (Peito, Abdômen e Genitália)</h6>
+          <ul>
+            <li>Costelas (6 kg total) – 12 pares.</li>
+          </ul>
+          <h6>Parte 3: Auxiliares (Braços e Pernas)</h6>
+          <ul>
+            <li>Úmero (0,6 kg, 35 cm) – Largo e denso.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Seção dos Draconatos -->
+      <div class="section" id="Draconatos">
+        <h2>Draconatos (Homo draconis)</h2>
+        <img src="/Draconato.jpeg" alt="Draconato" />
+        <div class="resumo">
+          <h5>Resumo</h5>
+          <ul>
+            <li>180 ossos, pesados e reforçados.</li>
+          </ul>
+          <h5>Sistema Muscular</h5>
+          <ul>
+            <li>Músculos de alta densidade, projetados para força.</li>
+          </ul>
+          <h5>Sistemas Internos</h5>
+          <ul>
+            <li>Respiratório: Pulmões resistentes.</li>
+          </ul>
+        </div>
+        <div class="pontos-fortes-fracos">
+          <h5>Pontos Fortes e Fracos</h5>
+          <h6>Pontos Fortes:</h6>
+          <ul>
+            <li>
+              ✔️ Resistência Física Elevada – Ossos densos e musculatura
+              reforçada tornam os draconatos altamente duráveis.
+            </li>
+            <li>
+              ✔️ Capacidade de Sopro Elemental – Habilidade exclusiva que pode
+              ser usada ofensivamente.
+            </li>
+            <li>
+              ✔️ Regeneração Rápida – Metabolismo dracônico permite recuperação
+              eficiente.
+            </li>
+            <li>
+              ✔️ Resistência a Venenos e Gases – Pulmões e fígado altamente
+              eficientes.
+            </li>
+            <li>
+              ✔️ Visão Aprimorada – Capacidade de enxergar em condições adversas
+              e detectar calor.
+            </li>
+          </ul>
+          <h6>Pontos Fracos:</h6>
+          <ul>
+            <li>
+              ❌ Peso Elevado – Dificulta agilidade e velocidade de
+              movimentação.
+            </li>
+            <li>
+              ❌ Gasto Energético Alto – Exige alimentação constante para manter
+              o metabolismo funcionando.
+            </li>
+            <li>
+              ❌ Sopro Elemental Limitado – Pode ser usado poucas vezes antes de
+              precisar de recuperação.
+            </li>
+            <li>
+              ❌ Visão Menos Precisa em Ambientes Escuros Totais – Dependem de
+              alguma fonte de luz ou calor para percepção.
+            </li>
+            <li>
+              ❌ Dependência de Magia para Potencial Máximo – Algumas
+              habilidades são melhores quando combinadas com manipulação mágica.
+            </li>
+          </ul>
+        </div>
+        <div class="detalhado">
+          <h5>Detalhado</h5>
+          <h6>Parte 1: Superior (Cabeça e Pescoço)</h6>
+          <ul>
+            <li>
+              Crânio (2,8 kg, 30 cm de comprimento) – Alongado e reforçado,
+              similar ao de um dragão jovem. Possui saliências ósseas para
+              proteção.
+            </li>
+            <li>
+              Mandíbula (1 kg, 18 cm de largura) – Extremamente forte, equipada
+              com dentes afiados e molares resistentes para triturar carne e
+              ossos.
+            </li>
+            <li>
+              Vértebras cervicais (1,1 kg total) – Maior flexibilidade que a
+              humana, permitindo maior movimentação da cabeça, útil para
+              percepção de ameaças.
+            </li>
+          </ul>
+          <h6>Parte 2: Centro (Peito, Abdômen e Genitália)</h6>
+          <ul>
+            <li>
+              Costelas (7 kg total) – 14 pares altamente resistentes, oferecendo
+              proteção extra aos órgãos vitais.
+            </li>
+            <li>
+              Esterno (1 kg, 30 cm) – Grosso e reforçado, resistente a impactos
+              diretos.
+            </li>
+            <li>
+              Vértebras torácicas e lombares (3 kg total) – Permitem
+              estabilidade ao tronco, mesmo com grande musculatura.
+            </li>
+            <li>
+              Bacia/Pelve (3,2 kg total) – Ampla e reforçada para sustentar
+              musculatura volumosa.
+            </li>
+          </ul>
+          <h6>Parte 3: Auxiliares (Braços e Pernas)</h6>
+          <ul>
+            <li>
+              Úmero (0,7 kg, 38 cm) – Espesso e resistente, permitindo golpes
+              fortes.
+            </li>
+            <li>
+              Rádio e Ulna (0,9 kg juntos, 30 cm) – Ossos robustos, resistentes
+              a torções.
+            </li>
+            <li>
+              Fêmur (1,5 kg, 48 cm) – Extremamente denso, capaz de suportar
+              grandes impactos.
+            </li>
+            <li>
+              Tíbia e Fíbula (1,1 kg juntas, 42 cm) – Adaptadas para suportar
+              velocidade e força de impacto.
+            </li>
+            <li>
+              Mãos e Pés (1,7 kg total) – Dedos terminam em garras curvadas,
+              ótimas para escaladas e combate.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Seção dos Tieflings -->
+      <div class="section" id="Tieflings">
+        <h2>Tieflings</h2>
+        <img src="/Tiferino.jpeg" alt="Tiefling" />
+        <div class="resumo">
+          <h5>Resumo</h5>
+          <ul>
+            <li>Alta resistência térmica.</li>
+            <li>Baixa sensibilidade à dor devido à influência infernal.</li>
+            <li>Sangue levemente cáustico, dificultando transfusões.</li>
+          </ul>
+        </div>
+        <div class="pontos-fortes-fracos">
+          <h5>Pontos Fortes e Fracos</h5>
+          <h6>Pontos Fortes:</h6>
+          <ul>
+            <li>
+              ✔️ Resistência a Magia e Fogo – Pele e órgãos resistentes a altas
+              temperaturas e manipulação mágica.
+            </li>
+            <li>
+              ✔️ Sistema Imunológico Aprimorado – Tolerância elevada a venenos e
+              substâncias tóxicas.
+            </li>
+            <li>
+              ✔️ Visão no Escuro – Adaptados para enxergar sem fontes de luz.
+            </li>
+            <li>
+              ✔️ Mobilidade e Reflexos Rápidos – Corpo leve e musculatura
+              eficiente para esquivas e combate ágil.
+            </li>
+            <li>
+              ✔️ Adaptação a Ambientes Hostis – Capacidade de sobreviver em
+              atmosferas tóxicas ou corrompidas.
+            </li>
+          </ul>
+          <h6>Pontos Fracos:</h6>
+          <ul>
+            <li>
+              ❌ Ossos Mais Leves – Embora resistentes, podem ser mais
+              vulneráveis a impactos diretos pesados.
+            </li>
+            <li>
+              ❌ Sensibilidade a Magia Sagrada – Alguns efeitos de magias
+              divinas podem ser mais intensos.
+            </li>
+            <li>
+              ❌ Necessidade de Energia Mágica – Tieflings sem exposição
+              frequente a magia podem se sentir mais fracos.
+            </li>
+            <li>
+              ❌ Pressão Arterial Elevada – Circulação rápida pode ser um
+              problema em caso de hemorragia.
+            </li>
+            <li>
+              ❌ Chifres e Cauda como Alvos – Embora úteis, podem ser agarrados
+              ou usados contra eles em combate.
+            </li>
+          </ul>
+        </div>
+        <div class="detalhado">
+          <h5>Detalhado</h5>
+          <h6>Parte 1: Superior (Cabeça e Pescoço)</h6>
+          <ul>
+            <li>
+              Crânio (2,5 kg, 28 cm de comprimento) – Similar ao humano, porém
+              reforçado para suportar chifres.
+            </li>
+            <li>
+              Mandíbula (900 g, 16 cm de largura) – Estrutura reforçada,
+              permitindo mordidas mais fortes.
+            </li>
+            <li>
+              Chifres (peso variável, 500 g a 2 kg cada, 20-45 cm de
+              comprimento) – Feitos de queratina e osso, ocos na base para
+              reduzir peso.
+            </li>
+            <li>
+              Vértebras cervicais (1 kg total) – Adaptadas para sustentar o peso
+              extra dos chifres sem comprometer a mobilidade.
+            </li>
+          </ul>
+          <h6>Parte 2: Centro (Peito, Abdômen e Genitália)</h6>
+          <ul>
+            <li>
+              Costelas (6 kg total) – 12 pares, levemente flexíveis, permitindo
+              resistência contra impactos sem quebrar facilmente.
+            </li>
+            <li>
+              Esterno (800 g, 28 cm) – Composto por uma camada óssea densa para
+              melhor proteção torácica.
+            </li>
+            <li>
+              Vértebras torácicas e lombares (2,8 kg total) – Flexíveis,
+              permitindo mais mobilidade para esquivas rápidas.
+            </li>
+            <li>
+              Bacia/Pelve (2,9 kg total) – Adaptada para suportar músculos
+              poderosos das pernas.
+            </li>
+          </ul>
+          <h6>Parte 3: Auxiliares (Braços e Pernas)</h6>
+          <ul>
+            <li>
+              Úmero (0,6 kg, 36 cm) – Levemente alongado para maior alcance de
+              golpes.
+            </li>
+            <li>
+              Rádio e Ulna (0,8 kg juntos, 28 cm) – Resistentes contra impactos.
+            </li>
+            <li>
+              Fêmur (1,4 kg, 46 cm) – Construído para velocidade e impulsão.
+            </li>
+            <li>
+              Tíbia e Fíbula (1 kg juntas, 40 cm) – Adaptadas para saltos
+              rápidos e pousos amortecidos.
+            </li>
+            <li>
+              Mãos e Pés (1,6 kg total) – Podem apresentar garras curtas, úteis
+              para escaladas e combate.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Seção de Outras Raças -->
+      <div class="section" id="Outras">
+        <h2>Outras Raças (Kenku, Tabaxi, etc.)</h2>
+        <div class="d-flex" style="gap: 2%">
+          <img src="/Tabaxi.png" alt="Tabaxi" />
+          <img src="Kenku.png" alt="Kenku" />
+        </div>
+        <p>
+          Raças aviárias e felinas possuem características únicas que as
+          diferenciam das demais.
+        </p>
+        <h5>Resumo</h5>
+        <ul>
+          <li>
+            Raças aviárias (Kenku): Ossos ocos, tornando-os frágeis, mas leves e
+            ágeis.
+          </li>
+          <li>
+            Raças felinas (Tabaxi): Metabolismo rápido e alto índice de
+            regeneração, com músculos ágeis e reflexos apurados.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Seção de Diagnóstico de Doenças -->
+      <div class="section" id="Diagnostico">
+        <h2>Diagnóstico de Doenças</h2>
+        <h5>Identificação de Febres e Infecções</h5>
+        <ul>
+          <li>
+            Método medieval: Toque com as costas da mão na testa, axilas ou
+            virilha.
+          </li>
+          <li>
+            Medição mais precisa: Comparação com a própria temperatura corporal
+            ou uso de pedras encantadas para indicar calor.
+          </li>
+          <li>
+            Sinais graves: Pele extremamente quente, suor excessivo, tremores.
+          </li>
+        </ul>
+        <h5>Análise de Urina</h5>
+        <ul>
+          <li>Cor normal: Amarela clara.</li>
+          <li>Muito escura: Desidratação ou problemas hepáticos.</li>
+          <li>Esbranquiçada: Infecção.</li>
+          <li>Vermelha: Sangramento interno ou doença renal.</li>
+          <li>
+            Cheiro muito forte: Infecção bacteriana ou desidratação severa.
+          </li>
+        </ul>
+        <h5>Análise de Fezes</h5>
+        <ul>
+          <li>Cor normal: Marrom.</li>
+          <li>Muito clara: Problemas hepáticos.</li>
+          <li>Preta e pegajosa: Sangramento interno no estômago.</li>
+          <li>Com vermes visíveis: Parasitas intestinais.</li>
+        </ul>
+        <h5>Análise de Sangue</h5>
+        <ul>
+          <li>Cor normal: Vermelho intenso.</li>
+          <li>Muito escuro: Baixa oxigenação ou veneno.</li>
+          <li>Muito claro: Possível anemia.</li>
+          <li>Com manchas ou coágulos: Infecção ou doença.</li>
+        </ul>
+        <h5>Medindo Pressão Arterial</h5>
+        <ul>
+          <li>
+            Sinais de pressão alta: Veias saltadas, tontura, pulsação forte.
+          </li>
+          <li>
+            Sinais de pressão baixa: Pele pálida, visão escurecendo, fraqueza.
+          </li>
+          <li>
+            Método medieval: Pressionar uma artéria no pulso ou pescoço e
+            comparar com batimentos normais.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Seção de Tratamento de Ferimentos -->
+      <div class="section" id="Tratamento">
+        <h2>Tratamento de Ferimentos</h2>
+        <h5>Técnicas de Suturas</h5>
+        <ul>
+          <li>
+            Suturas básicas: Usando agulha e fio esterilizado em álcool ou fogo.
+          </li>
+          <li>Grampos metálicos: Para cortes profundos em pele resistente.</li>
+          <li>Colagem com resina ou mel: Alternativa para cortes pequenos.</li>
+        </ul>
+        <h5>Tratamento de Hemorragias</h5>
+        <ul>
+          <li>Compressão direta.</li>
+          <li>Cauterização (caso extremo).</li>
+          <li>Uso de ervas hemostáticas como a raiz de selim.</li>
+        </ul>
+        <h5>Imobilização de Fraturas</h5>
+        <ul>
+          <li>Talas de madeira amarradas com tiras de couro.</li>
+          <li>Uso de magia de cura para acelerar o processo.</li>
+        </ul>
+      </div>
+
+      <!-- Seção de Cirurgias -->
+      <div class="section" id="Cirurgias">
+        <h2>Cirurgias</h2>
+        <h5>Abertura do Abdômen</h5>
+        <ul>
+          <li>
+            Usado para tratar apendicite, retirada de flechas internas ou
+            feridas infectadas.
+          </li>
+          <li>
+            Técnica: Fazer incisão, limpar a área e suturar com fios
+            resistentes.
+          </li>
+        </ul>
+        <h5>Trepanação (Abertura do Crânio)</h5>
+        <ul>
+          <li>Usado para aliviar pressão craniana após traumas.</li>
+          <li>Risco extremo de infecção.</li>
+        </ul>
+        <h5>Amputações</h5>
+        <ul>
+          <li>Realizadas com lâminas muito afiadas.</li>
+          <li>
+            Torniquete deve ser aplicado para evitar perda excessiva de sangue.
+          </li>
+          <li>Cauterização imediata pode evitar infecção.</li>
+        </ul>
+      </div>
+
+      <!-- Seção de Curas Alternativas -->
+      <div class="section" id="Curas">
+        <h2>Curas Alternativas</h2>
+        <h5>Ervas Medicinais</h5>
+        <ul>
+          <li>Raiz de Selim: Coagula sangue rapidamente.</li>
+          <li>Folha de Kelnor: Anestesia leve.</li>
+          <li>Semente de Moonleaf: Reduz febres.</li>
+        </ul>
+        <h5>Poções e Alquimia</h5>
+        <ul>
+          <li>
+            Poção de Cura: Mistura de ervas regenerativas e líquidos encantados.
+          </li>
+          <li>Elixir de Resistência: Aumenta a imunidade temporariamente.</li>
+          <li>Óleo de Ferro: Aplicado sobre feridas para reduzir infecção.</li>
+        </ul>
+        <h5>Medicina Divina e Arcana</h5>
+        <ul>
+          <li>
+            Magia de Cura / Palavra Curativa: Ajuda no fechamento de feridas e
+            restauração de tecidos.
+          </li>
+          <li>
+            Bom Fruto: Fonte de nutrientes e cura considerável quanto mais
+            frutos ingerir.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Seção de Ferramentas Médicas -->
+      <div class="section" id="Ferramentas">
+        <h2>Ferramentas Médicas</h2>
+        <ul>
+          <li>Bisturis de osso ou ferro.</li>
+          <li>Fios de tendões ou fibras vegetais.</li>
+          <li>Lâminas de corte para amputação.</li>
+          <li>Pinças de ferro para remover objetos do corpo.</li>
+          <li>Ervas anestésicas e sedativas.</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("filter-menu");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+      }
+
+      function aplicarFiltros() {
+        const racaSelecionada = document.querySelectorAll(
+          'input[type="checkbox"][value]:checked'
+        );
+        const detalheResumo = document.getElementById("detalhe-resumo").checked;
+        const detalhePontos = document.getElementById("detalhe-pontos").checked;
+        const detalheDetalhado =
+          document.getElementById("detalhe-detalhado").checked;
+        const diagnostico = document.getElementById("diagnostico").checked;
+        const tratamento = document.getElementById("tratamento").checked;
+        const cirurgias = document.getElementById("cirurgias").checked;
+        const curas = document.getElementById("curas").checked;
+        const ferramentas = document.getElementById("ferramentas").checked;
+
+        const sections = document.querySelectorAll(".section");
+        sections.forEach((section) => {
+          const raca = section.id;
+          const isRacaSelecionada =
+            racaSelecionada.length === 0 ||
+            Array.from(racaSelecionada).some(
+              (checkbox) => checkbox.value === raca
+            );
+
+          if (isRacaSelecionada) {
+            section.style.display = "block";
+
+            // Filtros de detalhes
+            const resumo = section.querySelector(".resumo");
+            const pontosFortesFracos = section.querySelector(
+              ".pontos-fortes-fracos"
+            );
+            const detalhado = section.querySelector(".detalhado");
+
+            if (detalheResumo) {
+              resumo.style.display = "block";
+            } else {
+              resumo.style.display = "none";
+            }
+
+            if (detalhePontos) {
+              pontosFortesFracos.style.display = "block";
+            } else {
+              pontosFortesFracos.style.display = "none";
+            }
+
+            if (detalheDetalhado) {
+              detalhado.style.display = "block";
+            } else {
+              detalhado.style.display = "none";
+            }
+          } else {
+            section.style.display = "none";
+          }
+        });
+
+        // Filtros de tópicos
+        const diagnosticoSection = document.getElementById("Diagnostico");
+        const tratamentoSection = document.getElementById("Tratamento");
+        const cirurgiasSection = document.getElementById("Cirurgias");
+        const curasSection = document.getElementById("Curas");
+        const ferramentasSection = document.getElementById("Ferramentas");
+
+        if (diagnostico) {
+          diagnosticoSection.style.display = "block";
+        } else {
+          diagnosticoSection.style.display = "none";
+        }
+
+        if (tratamento) {
+          tratamentoSection.style.display = "block";
+        } else {
+          tratamentoSection.style.display = "none";
+        }
+
+        if (cirurgias) {
+          cirurgiasSection.style.display = "block";
+        } else {
+          cirurgiasSection.style.display = "none";
+        }
+
+        if (curas) {
+          curasSection.style.display = "block";
+        } else {
+          curasSection.style.display = "none";
+        }
+
+        if (ferramentas) {
+          ferramentasSection.style.display = "block";
+        } else {
+          ferramentasSection.style.display = "none";
+        }
+      }
+
+      function limparFiltros() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((checkbox) => {
+          checkbox.checked = false;
+        });
+
+        const sections = document.querySelectorAll(".section");
+        sections.forEach((section) => {
+          section.style.display = "block";
+          section.querySelector(".resumo").style.display = "block";
+          section.querySelector(".pontos-fortes-fracos").style.display =
+            "block";
+          section.querySelector(".detalhado").style.display = "block";
+        });
+
+        const tópicosSections = document.querySelectorAll(
+          "#Diagnostico, #Tratamento, #Cirurgias, #Curas, #Ferramentas"
+        );
+        tópicosSections.forEach((section) => {
+          section.style.display = "block";
+        });
+      }
+
+      function toggleTheme() {
+        const body = document.body;
+        body.classList.toggle("dark-theme");
+      }
+    </script>
+  </body>
+</html>
